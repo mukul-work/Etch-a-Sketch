@@ -1,6 +1,8 @@
 const container = document.querySelector("#container");
 const btn = document.querySelector("#resize-btn")
+const colorPicker = document.querySelector("#color-picker");
 
+let currentColor = colorPicker.value;
 let isDrawing = false;
 
 document.body.addEventListener("mousedown", () => {
@@ -11,7 +13,9 @@ document.body.addEventListener("mouseup", () => {
     isDrawing = false;
 })
 
-
+colorPicker.addEventListener("input", () => {
+    currentColor = colorPicker.value;
+})
 
 function createGrid(size){
     container.innerHTML = "";
@@ -24,7 +28,7 @@ function createGrid(size){
 
         square.addEventListener("mouseenter", () => {
             if(isDrawing){
-                square.classList.add("hover");
+                square.style.backgroundColor = currentColor;
             }
         });
 

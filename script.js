@@ -1,7 +1,9 @@
 const container = document.querySelector("#container");
-const btn = document.querySelector("#resize-btn")
+const btn = document.querySelector("#resize-btn");
 const colorPicker = document.querySelector("#color-picker");
+const rainbowButton = document.querySelector("#rainbow-btn");
 
+let rainbowMode = false;
 let currentColor = colorPicker.value;
 let isDrawing = false;
 
@@ -17,6 +19,50 @@ colorPicker.addEventListener("input", () => {
     currentColor = colorPicker.value;
 })
 
+rainbowButton.addEventListener("click", () => {
+    rainbowMode = !rainbowMode;
+    rainbowButton.textContent = rainbowMode ? "Normal Mode" : "Rainbow Mode";
+    colorPicker.style.display = rainbowMode ? "none" : "inline-block";
+})
+
+function getRandomRGB(){
+    return{
+        r: Math.floor(Math.random() * 256),
+        g: Math.floor(Math.random() * 256),
+        b: Math.floor(Math.random() * 256)
+    };
+}
+
+function hexToRGB(currentColor){
+    const value = currentColor.replace("#", "");
+    return{
+        r: parseInt(value.slice(0,2), 16),
+        g: parseInt(value.slice(2,4), 16),
+        b: parseInt(value.slice(4,6), 16)
+    }
+}
+
+function darkenSquare(square){
+    let darkness = Number(square.dataset.darkness);
+
+    if(darkness < 10){
+        darkness += 1;
+        square.dataset.darkness = darkness;
+    }
+
+    const alpha = darkness / 10;
+
+    if(rainbowMode){
+        const { r, g, b } = getRandomRGB();
+        square.style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    }
+    else{
+        const { r, g, b } = hexToRGB(currentColor);
+        square.style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    }
+
+}
+
 function createGrid(size){
     container.innerHTML = "";
 
@@ -25,12 +71,19 @@ function createGrid(size){
     for(let i = 0; i < size * size; i++){
         const square = document.createElement("div");
         square.classList.add("square");
+        square.dataset.darkness = 0;
 
         square.addEventListener("mouseenter", () => {
             if(isDrawing){
-                square.style.backgroundColor = currentColor;
+                darkenSquare(square);
             }
         });
+
+        square.addEventListener("mousedown", () => {
+            if(isDrawing){
+                darkenSquare(square);
+            }
+        })
 
         container.appendChild(square);
     }

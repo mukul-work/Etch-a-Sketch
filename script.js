@@ -6,5 +6,8 @@ const TOTAL_SQUARES = GRID_SIDE * GRID_SIDE;
 for(let i = 0; i < TOTAL_SQUARES; i++){
     const square = document.createElement("div");
     square.classList.add("square");
+    square.addEventListener("mouseenter", () => {
+        square.classList.add("hover");
+    })
     container.appendChild(square);
 }

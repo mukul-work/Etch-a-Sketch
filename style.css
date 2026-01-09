@@ -14,3 +14,7 @@
     height: 30px;
     border: 1px solid #ddd;
 }
+
+.square .hover {
+    background-color: black;
+}

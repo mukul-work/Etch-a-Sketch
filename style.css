@@ -12,7 +12,3 @@
 .square {
     border: 1px solid darkolivegreen;
 }
-
-.square.hover {
-    background-color: lightgreen;
-}

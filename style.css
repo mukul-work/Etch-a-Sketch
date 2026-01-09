@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+}
+
+#container {
+    width: 480px;
+    height: 480px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.square {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+}

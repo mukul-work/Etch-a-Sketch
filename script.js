@@ -2,10 +2,15 @@ const container = document.querySelector("#container");
 const btn = document.querySelector("#resize-btn");
 const colorPicker = document.querySelector("#color-picker");
 const rainbowButton = document.querySelector("#rainbow-btn");
+const clearGrid = document.querySelector("#clear-grid");
 
 let rainbowMode = false;
 let currentColor = colorPicker.value;
 let isDrawing = false;
+
+clearGrid.addEventListener("click", () => {
+    container.innerHTML = '';
+})
 
 document.body.addEventListener("mousedown", () => {
     isDrawing = true;
@@ -73,7 +78,7 @@ function createGrid(size){
         square.classList.add("square");
         square.dataset.darkness = 0;
 
-        square.addEventListener("mouseenter", () => {
+        square.addEventListener("mouseover", () => {
             if(isDrawing){
                 darkenSquare(square);
             }
@@ -83,7 +88,7 @@ function createGrid(size){
             if(isDrawing){
                 darkenSquare(square);
             }
-        })
+        });
 
         container.appendChild(square);
     }

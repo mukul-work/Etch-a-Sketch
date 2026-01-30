@@ -1,15 +1,21 @@
 const container = document.querySelector("#container");
-const btn = document.querySelector("#resize-btn");
 const colorPicker = document.querySelector("#color-picker");
 const rainbowButton = document.querySelector("#rainbow-btn");
 const clearGrid = document.querySelector("#clear-grid");
+const sizeSlider = document.querySelector("#slider");
 
 let rainbowMode = false;
 let currentColor = colorPicker.value;
 let isDrawing = false;
+let currentSize = 16;
+
+function changeCurrentSize(newSize){
+    currentSize = newSize;
+} 
 
 clearGrid.addEventListener("click", () => {
     container.innerHTML = '';
+    createGrid(currentSize);
 })
 
 document.body.addEventListener("mousedown", () => {
@@ -94,14 +100,9 @@ function createGrid(size){
     }
 }
 
-createGrid(16);
+createGrid(currentSize);
 
-btn.addEventListener("click", () => {
-    let numberOfSquares = Number(prompt("Enter the number of squares per side(max 100): "));
-    if(!numberOfSquares || numberOfSquares < 1 || numberOfSquares > 100){
-        alert("Please enter a number between 1 and 100");
-        return;
-    }
-
-    createGrid(numberOfSquares);
-});
+sizeSlider.onchange = (e) => {
+    changeCurrentSize(e.target.value);
+    createGrid(currentSize);
+}

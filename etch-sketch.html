@@ -8,11 +8,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <input type="color" id="color-picker">
-    <button id="rainbow-btn">Rainbow Mode</button>
-    <input type="range" id="slider" value="16" min="1" max="64"/>
-    <button id="clear-grid">Clear grid</button>
-    <div id="container"></div>
+    <header class="header">
+        <h1 class="title">Etch-a-sketch</h1>
+    </header>
+    <main class = "main">
+        <div class="settings">
+            <div id="sizeValue">16 x 16</div>
+            <input id="slider" type="range" value="16" min="1" max="64"/>
+            <button id="clear-grid">Clear grid</button>
+            <button id="rainbow-btn">Rainbow Mode</button>
+            <input id="color-picker" type="color">
+        </div>
+        <div id="container"></div>
+    </main>
     <script src="script.js"></script>
+    
 </body>
 </html>

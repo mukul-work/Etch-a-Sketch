@@ -3,6 +3,7 @@ const colorPicker = document.querySelector("#color-picker");
 const rainbowButton = document.querySelector("#rainbow-btn");
 const clearGrid = document.querySelector("#clear-grid");
 const sizeSlider = document.querySelector("#slider");
+const sizeValue = document.querySelector("#sizeValue");
 
 let rainbowMode = false;
 let currentColor = colorPicker.value;
@@ -101,6 +102,14 @@ function createGrid(size){
 }
 
 createGrid(currentSize);
+
+function changeSizeValue(size){
+    sizeValue.innerHTML = `${size} x ${size}`;
+}
+
+sizeSlider.onmousemove = (e) => {
+    changeSizeValue(e.target.value);
+}
 
 sizeSlider.onchange = (e) => {
     changeCurrentSize(e.target.value);

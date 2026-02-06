@@ -5,7 +5,7 @@ A browser-based drawing application that allows users to draw on a customizable 
 This project exists to practice DOM manipulation, event handling, and dynamic UI updates using vanilla JavaScript.
 
 ## Demo
-- Live URL: (https://mukul-work.github.io/Etch-a-Sketch/)
+- []Live URL:](https://mukul-work.github.io/Etch-a-Sketch/)
 
 ## Features
 - Dynamic grid generation based on user input

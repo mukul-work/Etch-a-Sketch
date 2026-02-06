@@ -29,6 +29,3 @@ This project exists to practice DOM manipulation, event handling, and dynamic UI
 git clone https://github.com/mukul-work/etch-a-sketch.git
 cd etch-a-sketch
 open index.html
-
-
-
